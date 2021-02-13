@@ -1,3 +1,1 @@
-This is the READ ME file for this project.
-
-This is the coursework project for Team D.
+[![Build Status](https://travis-ci.com/40456397/team_D_coursework.svg?branch=master)](https://travis-ci.com/40456397/team_D_coursework)
