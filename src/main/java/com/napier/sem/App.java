@@ -13,10 +13,15 @@ public class App {
         // Connect to database
         app.connect();
 
-        app.displayCountries();
+//        app.displayCountries();
+
+
 
         // Disconnect from database
         app.disconnect();
+    }
+
+    private void runReport1() {
     }
 
     private void displayCountries() {
