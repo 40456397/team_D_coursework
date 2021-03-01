@@ -6,7 +6,7 @@ rectangle Database
 
 rectangle "Customer Details" {
     usecase UC1 as "Add Details to Database"
-    usecase UCa as "Amend Details"
+    usecase UCa as "Amend Cust Details"
 
     Int_Dept - UC1
     UCa ..> Database : Amend
