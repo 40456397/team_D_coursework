@@ -1,0 +1,16 @@
+@startuml
+
+actor Int_Dept as "Internet_Usage_Dept"
+actor DA as "Data Analyst"
+rectangle Database
+
+rectangle "Customer Details" {
+    usecase UC1 as "Add Details to Database"
+    usecase UCa as "Amend Details"
+
+    Int_Dept - UC1
+    UCa ..> Database : Amend
+    UC1 ..> Database : Add Details
+
+}
+@enduml
