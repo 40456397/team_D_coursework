@@ -1,7 +1,7 @@
 @startuml
 
+usecase "Use Case 1"
 actor Int_Dept as "Internet_Usage_Dept"
-actor DA as "Data Analyst"
 rectangle Database
 
 rectangle "Customer Details" {
