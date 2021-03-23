@@ -1,0 +1,177 @@
+SQL Queries
+
+1
+select Code, Name, Continent, Region, Population, Capital from country
+order by population desc
+
+2
+SELECT Code, Name, Continent, Region, Population, Capital from country
+WHERE Continent = "Europe"
+ORDER BY Population desc
+
+3
+SELECT Code, Name, Continent, Region, Population, Capital from country
+WHERE Region = "Western Europe"
+ORDER BY Population desc
+
+4
+SELECT Code, Name, Continent, Region, Population, Capital FROM country
+ORDER by population desc
+LIMIT 10
+
+5
+SELECT Code, Name, Continent, Region, Population, Capital from country
+WHERE Continent = "Europe"
+ORDER BY Population desc
+LIMIT 10
+
+6
+SELECT Code, Name, Continent, Region, Population, Capital from country
+WHERE Region = "Western Europe"
+ORDER BY Population desc
+LIMIT 10
+
+7
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+ORDER BY Population desc
+
+8
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE co.continent = "Africa"
+ORDER BY ci.population desc
+
+9
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE co.region = "Western Europe"
+ORDER BY ci.population desc
+
+10
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE co.name = "Germany"
+ORDER BY ci.population desc
+
+11
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE ci.District = "Hessen"
+ORDER BY ci.population desc
+
+12
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+ORDER BY Population desc
+LIMIT 20
+
+13
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE co.continent = "Africa"
+ORDER BY ci.population desc
+LIMIT 20
+
+14
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE co.region = "Western Europe"
+ORDER BY ci.population desc
+LIMIT 20
+
+15
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE co.name = "Germany"
+ORDER BY ci.population desc
+LIMIT 8
+
+16
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co ON ci.countrycode = co.code
+WHERE ci.District = "Hessen"
+ORDER BY ci.population desc
+LIMIT 5
+
+17
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+WHERE ci.ID In
+	(SELECT co.Capital FROM country)
+ORDER BY ci.population desc
+
+18
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+WHERE co.continent = "Europe" AND ci.ID In
+	(SELECT co.Capital FROM country)
+ORDER BY ci.population desc
+
+19
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+WHERE co.region = "Western Europe" AND ci.ID In
+	(SELECT co.Capital FROM country)
+ORDER BY ci.population desc
+
+20
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+WHERE ci.ID In
+	(SELECT co.Capital FROM country)
+ORDER BY ci.population desc
+LIMIT 20
+
+21
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+WHERE co.continent = "Europe" AND ci.ID In
+	(SELECT co.Capital FROM country)
+ORDER BY ci.population desc
+LIMIT 10
+
+22
+SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci
+JOIN country co on ci.CountryCode = co.Code
+WHERE co.region = "Western Europe" AND ci.ID In
+	(SELECT co.Capital FROM country)
+ORDER BY ci.population desc
+LIMIT 10
+
+23
+SELECT co.Continent, sum(DISTINCT co.Population) as 'Cont. Pop', 
+sum(ci.Population) as 'City Pop',
+(sum(ci.Population) / sum(DISTINCT co.Population))*100 as 'City Pop %',
+(sum(DISTINCT co.Population) - sum(ci.Population)) as 'Non City Pop', 
+((sum(DISTINCT co.Population) - sum(ci.Population))/sum(DISTINCT co.Population))*100 as 'Non City Pop %' 
+from country co
+JOIN city ci on co.Code = ci.CountryCode 
+GROUP BY co.Continent
+
+24
+SELECT co.Region, sum(DISTINCT co.Population) as 'Region Pop', 
+sum(ci.Population) as 'City Pop',
+(sum(ci.Population) / sum(DISTINCT co.Population))*100 as 'City Pop %',
+(sum(DISTINCT co.Population) - sum(ci.Population)) as 'Non City Pop', 
+((sum(DISTINCT co.Population) - sum(ci.Population))/sum(DISTINCT co.Population))*100 as 'Non City Pop %' 
+from country co
+JOIN city ci on co.Code = ci.CountryCode 
+GROUP BY co.Region
+
+25
+SELECT co.Name, sum(DISTINCT co.Population) as 'Country Pop', 
+sum(ci.Population) as 'City Pop',
+(sum(ci.Population) / sum(DISTINCT co.Population))*100 as 'City Pop %',
+(sum(DISTINCT co.Population) - sum(ci.Population)) as 'Non City Pop', 
+((sum(DISTINCT co.Population) - sum(ci.Population))/sum(DISTINCT co.Population))*100 as 'Non City Pop %' 
+from country co
+JOIN city ci on co.Code = ci.CountryCode 
+GROUP BY co.Name
+
+Language
+SELECT cl.Language, sum(ROUND((co.Population*(cl.Percentage/100)),0)) As 'Pop with Lang' from countrylanguage cl
+JOIN country co ON cl.CountryCode = co.Code
+WHERE Language in ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')
+GROUP BY cl.Language
+ORDER BY sum(ROUND((co.Population*(cl.Percentage/100)),0)) desc;
