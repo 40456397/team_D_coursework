@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import javax.swing.*;
 
 public class App {
     /**
@@ -20,6 +21,34 @@ public class App {
         a.disconnect();
     }
     private void runReport1() {
+        try {
+            // Create variable for user input
+            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent");
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
+                    "WHERE Continent = " +selCont+ "\n" +
+                    "ORDER BY Population desc;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                String code = rset.getString("Code");
+                String name = rset.getString("Name");
+                String continent = rset.getString("Continent");
+                String region = rset.getString("Region");
+                int count = rset.getInt("population");
+                String capital = rset.getString("Capital");
+                System.out.println(name + "\t\t" + count);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
     }
 
     private void displayCountries() {
@@ -31,14 +60,19 @@ public class App {
             //could break this down into two SQL statements to retrieve employee details using joins
             // then another query to get the manager
 
-            String strSelect = "SELECT * FROM city;";
+            String strSelect = "select Code, Name, Continent, Region, Population, Capital from country\n" +
+                    "order by population desc;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
 
             while (rset.next()) {
+                String code = rset.getString("Code");
                 String name = rset.getString("Name");
+                String continent = rset.getString("Continent");
+                String region = rset.getString("Region");
                 int count = rset.getInt("population");
+                String capital = rset.getString("Capital");
                 System.out.println(name + "\t\t" + count);
             }
         } catch (Exception e) {
