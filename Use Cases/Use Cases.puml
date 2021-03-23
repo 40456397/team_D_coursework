@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+usecase "Use Case 2"
+actor DA as "Data Analyst"
+rectangle Database
+
+rectangle "Population Information Request" {
+    usecase UCa as "Population Information returned"
+    usecase UC1 as "Send Query to Database"
+
+    DA - UC1
+    Database ..> UCa : Data returned
+    UC1 ..> Database : Send query
+
+}
+
+@enduml
