@@ -25,7 +25,13 @@ public class App {
         }
 
         // Get Country
-        Country co = a.getCountry("United Kingdom");
+        Country co = a.getCountry("GBR");
+
+        // Run Report1
+        a.runReport1();
+
+        // Run Report2
+        a.runReport2();
 
         // Disconnect from database
         a.disconnect();
@@ -40,9 +46,8 @@ public class App {
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
-            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country " +
-                    "WHERE Continent = " +selCont+ ", " +
-                    "ORDER BY Population desc;";
+            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
+                    "WHERE Continent = '" +selCont+ "', ORDER BY Population desc;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -71,8 +76,7 @@ public class App {
             //could break this down into two SQL statements to retrieve employee details using joins
             // then another query to get the manager
 
-            String strSelect = "select Code, Name, Continent, Region, Population, Capital from country " +
-                    "order by population desc;";
+            String strSelect = "select Code, Name, Continent, Region, Population, Capital from country order by population desc;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
