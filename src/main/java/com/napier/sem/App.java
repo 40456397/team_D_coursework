@@ -17,15 +17,15 @@ public class App {
         // Connect to database
         if (args.length < 1)
         {
-            a.connect("localhost:3306");
+            a.connect("localhost:33060");
         }
         else
         {
             a.connect(args[0]);
         }
 
-        // Get Country
-        Country co = a.getCountry("GBR");
+        // test code - Get Country
+        //Country co = a.getCountry("GBR");
 
         // Run Report1
         a.runReport1();
@@ -47,7 +47,7 @@ public class App {
 
             // Create string for SQL statement
             String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
-                    "WHERE Continent = '" +selCont+ "', ORDER BY Population desc;";
+                    "WHERE Continent = '" +selCont+ "' ORDER BY Population desc;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -59,7 +59,7 @@ public class App {
                 String region = rset.getString("Region");
                 int count = rset.getInt("population");
                 int capital = rset.getInt("Capital");
-                System.out.println(name + "\t\t" + count);
+                System.out.println(code + "\t" + name + "\t" + continent + "\t" + region + "\t" + count + "\t" + capital);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -88,7 +88,7 @@ public class App {
                 String region = rset.getString("Region");
                 int count = rset.getInt("population");
                 int capital = rset.getInt("Capital");
-                System.out.println(name + "\t\t" + count);
+                System.out.println(code + "\t" + name + "\t" + continent + "\t" + region + "\t" + count + "\t" + capital);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
