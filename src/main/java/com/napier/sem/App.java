@@ -33,40 +33,57 @@ public class App {
         // Run Report2
         a.runReport2();
 
+        // Run Report3
+        a.runReport3();
+
+        // Run Report4
+        a.runReport4();
+
+        // Run Report5
+        a.runReport5();
+
         // Disconnect from database
         a.disconnect();
 
     }
-    private void runReport2() {
-        try {
-            // Create variable for user input
-            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent", "Report 2");
 
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
-                    "WHERE Continent = '" +selCont+ "' ORDER BY Population desc;";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            while (rset.next()) {
-                String code = rset.getString("Code");
-                String name = rset.getString("Name");
-                String continent = rset.getString("Continent");
-                String region = rset.getString("Region");
-                int count = rset.getInt("population");
-                int capital = rset.getInt("Capital");
-                System.out.println(code + "\t" + name + "\t" + continent + "\t" + region + "\t" + count + "\t" + capital);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get details");
+    /**
+     * Test returning Country info
+     * @return
+     */
+    public Country getCountry(String testCode) throws SQLException {
+        //Exception Handler for null entry
+        if (testCode == null)
+        {
+            System.out.println("No Country specified");
+            return null;
         }
+        // Create an SQL statement
+        Statement stmt = con.createStatement();
+        // Create string for SQL statement
+        String strSelect =
+                "SELECT Code, Name, Continent, Capital FROM country WHERE Code = '" + testCode + "';";
+        // Execute SQL statement
+        ResultSet rset = stmt.executeQuery(strSelect);
+        // Return country if valid.
+        // Check one is returned
+        if (rset.next())
+        {
+            Country co = new Country();
+            co.code = rset.getString("Code");
+            co.name = rset.getString("Name");
+            co.continent = rset.getString("Continent");
+            co.capital = rset.getInt("Capital");
+            return co;
+        }
+        else
+            return null;
+
     }
 
+    /**
+     * Report 1
+     */
     private void runReport1() {
         try {
             // Create an SQL statement
@@ -97,37 +114,145 @@ public class App {
     }
 
     /**
-     * Test returning Country info
-     * @return
+     * Report 2
      */
-    public Country getCountry(String testCode) throws SQLException {
-            //Exception Handler for null entry
-            if (testCode == null)
-            {
-                System.out.println("No Country specified");
-                return null;
-            }
+    private void runReport2() {
+        try {
+            // Create variable for user input
+            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent", "Report 2", JOptionPane.QUESTION_MESSAGE);
+
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT Code, Name, Continent, Capital FROM country WHERE Code = '" + testCode + "';";
+            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
+                    "WHERE Continent = '" +selCont+ "' ORDER BY Population desc;";
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Return country if valid.
-            // Check one is returned
-            if (rset.next())
-            {
-                Country co = new Country();
-                co.code = rset.getString("Code");
-                co.name = rset.getString("Name");
-                co.continent = rset.getString("Continent");
-                co.capital = rset.getInt("Capital");
-                return co;
-            }
-            else
-                return null;
 
+            while (rset.next()) {
+                String code = rset.getString("Code");
+                String name = rset.getString("Name");
+                String continent = rset.getString("Continent");
+                String region = rset.getString("Region");
+                int count = rset.getInt("population");
+                int capital = rset.getInt("Capital");
+                System.out.println(code + "\t" + name + "\t" + continent + "\t" + region + "\t" + count + "\t" + capital);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+        // Reset Variables
+        String selCont = "";
+    }
+
+    /**
+     * Report 3
+     */
+    private void runReport3() {
+        try {
+            // Create variable for user input
+            String selRegion = JOptionPane.showInputDialog(null, "Please enter the required Region", "Report 3", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
+                    "WHERE Region = '" +selRegion+ "' ORDER BY Population desc;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                String code = rset.getString("Code");
+                String name = rset.getString("Name");
+                String continent = rset.getString("Continent");
+                String region = rset.getString("Region");
+                int count = rset.getInt("population");
+                int capital = rset.getInt("Capital");
+                System.out.println(code + "\t" + name + "\t" + continent + "\t" + region + "\t" + count + "\t" + capital);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+        // Reset Variables
+        String selRegion = "";
+    }
+
+    /**
+     * Report 4
+     */
+    private void runReport4() {
+        try {
+            // Create variable for user input
+            int reqCountries = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 4", JOptionPane.QUESTION_MESSAGE));
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
+                    "ORDER BY Population desc\nLIMIT " +reqCountries+ ";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                String code = rset.getString("Code");
+                String name = rset.getString("Name");
+                String continent = rset.getString("Continent");
+                String region = rset.getString("Region");
+                int count = rset.getInt("population");
+                int capital = rset.getInt("Capital");
+                System.out.println(code + "\t" + name + "\t" + continent + "\t" + region + "\t" + count + "\t" + capital);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+        // Reset Variables
+        int reqCountries = 0;
+    }
+
+    /**
+     * Report 5
+     */
+    private void runReport5() {
+        try {
+            // Create variable for user input
+            int reqCountries = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 5", JOptionPane.QUESTION_MESSAGE));
+            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent", "Report 5", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
+                    "WHERE Continent = '" +selCont+ "'\nORDER BY Population desc\nLIMIT " +reqCountries+ ";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                String code = rset.getString("Code");
+                String name = rset.getString("Name");
+                String continent = rset.getString("Continent");
+                String region = rset.getString("Region");
+                int count = rset.getInt("population");
+                int capital = rset.getInt("Capital");
+                System.out.println(code + "\t" + name + "\t" + continent + "\t" + region + "\t" + count + "\t" + capital);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+        // Reset Variables
+        int reqCountries = 0;
+        String selCont = "";
     }
 
     /**
