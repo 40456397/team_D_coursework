@@ -40,7 +40,7 @@ public class App {
     private void runReport2() {
         try {
             // Create variable for user input
-            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent");
+            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent", "Report 2");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -101,6 +101,12 @@ public class App {
      * @return
      */
     public Country getCountry(String testCode) throws SQLException {
+            //Exception Handler for null entry
+            if (testCode == null)
+            {
+                System.out.println("No Country specified");
+                return null;
+            }
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
