@@ -33,19 +33,19 @@ public class App {
         //Country co = a.getCountry("GBR");
 
         // Run Reports
-        a.runReport1();
-        a.runReport2();
-        a.runReport3();
-        a.runReport4();
-        a.runReport5();
-        a.runReport6();
-        a.runReport7();
-        a.runReport8();
-        a.runReport9();
-        a.runReport10();
-        a.runReport11();
-        a.runReport12();
-        a.runReport13();
+        //a.runReport1();
+        //a.runReport2();
+        //a.runReport3();
+        //a.runReport4();
+        //a.runReport5();
+        //a.runReport6();
+        //a.runReport7();
+        //a.runReport8();
+        //a.runReport9();
+        //a.runReport10();
+        //a.runReport11();
+        //a.runReport12();
+        //a.runReport13();
         //a.runReport14();
         //a.runReport15();
         //a.runReport16();
@@ -55,9 +55,9 @@ public class App {
         //a.runReport20();
         //a.runReport21();
         //a.runReport22();
-        //a.runReport23();
-        //a.runReport24();
-        //a.runReport25();
+        a.runReport23();
+        a.runReport24();
+        a.runReport25();
 
         // Disconnect from database
         a.disconnect();
@@ -293,14 +293,14 @@ public class App {
     private void runReport4() {
         try {
             // Create variable for user input
-            int reqCountries = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 4", JOptionPane.QUESTION_MESSAGE));
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 4", JOptionPane.QUESTION_MESSAGE));
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
             String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
-                    "ORDER BY Population desc\nLIMIT " +reqCountries+ ";";
+                    "ORDER BY Population desc\nLIMIT " +reqItems+ ";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -344,7 +344,7 @@ public class App {
         }
 
         // Reset Variables
-        int reqCountries = 0;
+        int reqItems = 0;
         String code = "";
         String name = "";
         String continent = "";
@@ -359,7 +359,7 @@ public class App {
     private void runReport5() {
         try {
             // Create variable for user input
-            int reqCountries = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 5", JOptionPane.QUESTION_MESSAGE));
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 5", JOptionPane.QUESTION_MESSAGE));
             String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent", "Report 5", JOptionPane.QUESTION_MESSAGE);
 
             // Create an SQL statement
@@ -367,7 +367,7 @@ public class App {
 
             // Create string for SQL statement
             String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
-                    "WHERE Continent = '" +selCont+ "'\nORDER BY Population desc\nLIMIT " +reqCountries+ ";";
+                    "WHERE Continent = '" +selCont+ "'\nORDER BY Population desc\nLIMIT " +reqItems+ ";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -411,7 +411,7 @@ public class App {
         }
 
         // Reset Variables
-        int reqCountries = 0;
+        int reqItems = 0;
         String selCont = "";
         String code = "";
         String name = "";
@@ -427,7 +427,7 @@ public class App {
     private void runReport6() {
         try {
             // Create variable for user input
-            int reqCountries = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 6", JOptionPane.QUESTION_MESSAGE));
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 6", JOptionPane.QUESTION_MESSAGE));
             String selRegion = JOptionPane.showInputDialog(null, "Please enter the required Region", "Report 6", JOptionPane.QUESTION_MESSAGE);
 
             // Create an SQL statement
@@ -435,7 +435,7 @@ public class App {
 
             // Create string for SQL statement
             String strSelect = "SELECT Code, Name, Continent, Region, Population, Capital from country\n" +
-                    "WHERE Region = '" +selRegion+ "'\nORDER BY Population desc\nLIMIT " +reqCountries+ ";";
+                    "WHERE Region = '" +selRegion+ "'\nORDER BY Population desc\nLIMIT " +reqItems+ ";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -479,7 +479,7 @@ public class App {
         }
 
         // Reset Variables
-        int reqCountries = 0;
+        int reqItems = 0;
         String selRegion = "";
         String code = "";
         String name = "";
@@ -799,14 +799,14 @@ public class App {
     private void runReport12() {
         try {
             // Create variable for user input
-            int reqCountries = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 12", JOptionPane.QUESTION_MESSAGE));
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 12", JOptionPane.QUESTION_MESSAGE));
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
             String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
-                    "JOIN country co on ci.CountryCode = co.Code\nORDER by Population desc\nLIMIT " +reqCountries+ ";";
+                    "JOIN country co on ci.CountryCode = co.Code\nORDER by Population desc\nLIMIT " +reqItems+ ";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -847,7 +847,7 @@ public class App {
         }
 
         // Reset Variables
-        int reqCountries = 0;
+        int reqItems = 0;
         String name = "";
         String country = "";
         String district = "";
@@ -860,7 +860,7 @@ public class App {
     private void runReport13() {
         try {
             // Create variable for user input
-            int reqCountries = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Countries", "Report 13", JOptionPane.QUESTION_MESSAGE));
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 13", JOptionPane.QUESTION_MESSAGE));
             String selCont = JOptionPane.showInputDialog(null, "Please enter the required Continent", "Report 13", JOptionPane.QUESTION_MESSAGE);
 
             // Create an SQL statement
@@ -868,7 +868,7 @@ public class App {
 
             // Create string for SQL statement
             String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
-                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Continent = '" + selCont + "'\nORDER by Population desc\nLIMIT " +reqCountries+ ";";
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Continent = '" + selCont + "'\nORDER by Population desc\nLIMIT " +reqItems+ ";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -909,11 +909,750 @@ public class App {
         }
 
         // Reset Variables
-        int reqCountries = 0;
+        int reqItems = 0;
+        String selCont = "";
         String name = "";
         String country = "";
         String district = "";
         int count = 0;
+    }
+
+    /**
+     * Report 14
+     */
+    private void runReport14() {
+        try {
+            // Create variable for user input
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 14", JOptionPane.QUESTION_MESSAGE));
+            String selRegion = JOptionPane.showInputDialog(null, "Please enter the required Region", "Report 14", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Region = '" + selRegion + "'\nORDER by Population desc\nLIMIT " +reqItems+ ";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report14.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        } /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        int reqItems = 0;
+        String selRegion = "";
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 15
+     */
+    private void runReport15() {
+        try {
+            // Create variable for user input
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 15", JOptionPane.QUESTION_MESSAGE));
+            String selCountry = JOptionPane.showInputDialog(null, "Please enter the required Country", "Report 15", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Name = '" + selCountry + "'\nORDER by Population desc\nLIMIT " +reqItems+ ";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report15.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        } /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        int reqItems = 0;
+        String selCountry = "";
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 16
+     */
+    private void runReport16() {
+        try {
+            // Create variable for user input
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 16", JOptionPane.QUESTION_MESSAGE));
+            String selDistrict = JOptionPane.showInputDialog(null, "Please enter the required District", "Report 16", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE ci.District = '" + selDistrict + "'\nORDER by Population desc\nLIMIT " +reqItems+ ";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report16.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        } /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        int reqItems = 0;
+        String selDistrict = "";
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 17
+     */
+    private void runReport17() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE ci.ID in (SELECT co.Capital FROM country)\nORDER by Population desc;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report1.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        } /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+        // Reset Variables
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 18
+     */
+    private void runReport18() {
+        try {
+            // Create variable for user input
+            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Contintent", "Report 18", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Continent = '" + selCont + "' AND ci.ID in (SELECT co.Capital FROM country)\nORDER by Population desc;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report18.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        } /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+
+            // Reset Variables
+            String selCont = "";
+            String name = "";
+            String country = "";
+            String district = "";
+            int count = 0;
+        }
+    }
+
+    /**
+     * Report 19
+     */
+    private void runReport19() {
+        try {
+            // Create variable for user input
+            String selRegion = JOptionPane.showInputDialog(null, "Please enter the required Region", "Report 19", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Region = '" + selRegion + "' AND ci.ID in (SELECT co.Capital FROM country)\nORDER by Population desc;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report19.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        }
+        /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        String selRegion = "";
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 20
+     */
+    private void runReport20() {
+        try {
+            // Create variable for user input
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 20", JOptionPane.QUESTION_MESSAGE));
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE ci.ID in (SELECT co.Capital FROM country)\nORDER by Population desc\nLIMIT "+reqItems+";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report20.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        }
+        /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        int reqItems = 0;
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 21
+     */
+    private void runReport21() {
+        try {
+            // Create variable for user input
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 21", JOptionPane.QUESTION_MESSAGE));
+            String selCont = JOptionPane.showInputDialog(null, "Please enter the required Contintent", "Report 21", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Continent = '" + selCont+ "' AND ci.ID in (SELECT co.Capital FROM country)\nORDER by Population desc\nLIMIT "+reqItems+";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report21.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        }
+        /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        int reqItems = 0;
+        String selCont = "";
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 22
+     */
+    private void runReport22() {
+        try {
+            // Create variable for user input
+            int reqItems = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of required Cities", "Report 22", JOptionPane.QUESTION_MESSAGE));
+            String selRegion = JOptionPane.showInputDialog(null, "Please enter the required Region", "Report 22", JOptionPane.QUESTION_MESSAGE);
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
+                    "JOIN country co on ci.CountryCode = co.Code\nWHERE co.Region = '" + selRegion+ "' AND ci.ID in (SELECT co.Capital FROM country)\nORDER by Population desc\nLIMIT "+reqItems+";";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report22.csv"));
+
+            // write header line containing column names
+            fileWriter.write("City_Name,Country_Name,District,Population");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                String country = rset.getString("Country");
+                String district = rset.getString("District");
+                int count = rset.getInt("population");
+                // format the data
+                String line = String.format("%s, %s, %s, %d",
+                        name, country, district, count);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        }
+        /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        int reqItems = 0;
+        String selRegion = "";
+        String name = "";
+        String country = "";
+        String district = "";
+        int count = 0;
+    }
+
+    /**
+     * Report 23
+     */
+    private void runReport23() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT co.Continent, sum(DISTINCT co.Population) as 'ContinentPop', sum(ci.Population) as 'CityPop',\n" +
+                    "(sum(ci.Population) / sum(DISTINCT co.Population))*100 as 'CityPop%', (sum(DISTINCT co.Population) - sum(ci.Population)) as 'NonCityPop',\n"+
+                    "((sum(DISTINCT co.Population) - sum(ci.Population))/sum(DISTINCT co.Population))*100 as 'NonCityPop%' FROM country co\n"+
+                    "JOIN city ci on co.Code = ci.CountryCode\nGROUP BY co.Continent;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report23.csv"));
+
+            // write header line containing column names
+            fileWriter.write("Name,Population,City Pop%,Non-City Pop%");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Continent");
+                long count = rset.getLong("ContinentPop");
+                float citypop = rset.getFloat("CityPop%");
+                float noncitypop = rset.getFloat("NonCityPop%");
+                // format the data
+                String line = String.format("%s, %d, %f, %f",
+                        name, count, citypop, noncitypop);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        }
+        /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        String name = "";
+        long count = 0;
+        float citypop = 0;
+        float noncitypop = 0;
+    }
+
+    /**
+     * Report 24
+     */
+    private void runReport24() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT co.Region, sum(DISTINCT co.Population) as 'ContinentPop', sum(ci.Population) as 'CityPop',\n" +
+                    "(sum(ci.Population) / sum(DISTINCT co.Population))*100 as 'CityPop%', (sum(DISTINCT co.Population) - sum(ci.Population)) as 'NonCityPop',\n"+
+                    "((sum(DISTINCT co.Population) - sum(ci.Population))/sum(DISTINCT co.Population))*100 as 'NonCityPop%' FROM country co\n"+
+                    "JOIN city ci on co.Code = ci.CountryCode\nGROUP BY co.Region;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report24.csv"));
+
+            // write header line containing column names
+            fileWriter.write("Name,Population,City Pop%,Non-City Pop%");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Region");
+                long count = rset.getLong("ContinentPop");
+                float citypop = rset.getFloat("CityPop%");
+                float noncitypop = rset.getFloat("NonCityPop%");
+                // format the data
+                String line = String.format("%s, %d, %f, %f",
+                        name, count, citypop, noncitypop);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        }
+        /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        String name = "";
+        long count = 0;
+        float citypop = 0;
+        float noncitypop = 0;
+    }
+
+    /**
+     * Report 25
+     */
+    private void runReport25() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect = "SELECT co.Name, sum(DISTINCT co.Population) as 'ContinentPop', sum(ci.Population) as 'CityPop',\n" +
+                    "(sum(ci.Population) / sum(DISTINCT co.Population))*100 as 'CityPop%', (sum(DISTINCT co.Population) - sum(ci.Population)) as 'NonCityPop',\n"+
+                    "((sum(DISTINCT co.Population) - sum(ci.Population))/sum(DISTINCT co.Population))*100 as 'NonCityPop%' FROM country co\n"+
+                    "JOIN city ci on co.Code = ci.CountryCode\nGROUP BY co.Name;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Get user's home folder, assign path to String and write new folder
+            String startPos = System.getProperty("user.home");
+            File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
+            homeFolder.mkdirs();
+            // Create fileWrite instance
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report25.csv"));
+
+            // write header line containing column names
+            fileWriter.write("Name,Population,City Pop%,Non-City Pop%");
+            // retrieve data and write to a new line in the CSV file
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                long count = rset.getLong("ContinentPop");
+                float citypop = rset.getFloat("CityPop%");
+                float noncitypop = rset.getFloat("NonCityPop%");
+                // format the data
+                String line = String.format("%s, %d, %f, %f",
+                        name, count, citypop, noncitypop);
+                // write the new line
+                fileWriter.newLine();
+                fileWriter.write(line);
+                fileWriter.flush();
+            }
+        }
+        /**
+         * catch (Exception e) {
+         * System.out.println(e.getMessage());
+         * System.out.println("Failed to get details");
+         */
+        catch (SQLException e) {
+            System.out.println("Database error:");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File IO error:");
+            e.printStackTrace();
+        }
+
+        // Reset Variables
+        String name = "";
+        long count = 0;
+        float citypop = 0;
+        float noncitypop = 0;
     }
 
     /**
