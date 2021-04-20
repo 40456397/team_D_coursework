@@ -4,9 +4,6 @@ import org.junit.jupiter.api.*;
 
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-
 public class AppTest
 {
     static App app;

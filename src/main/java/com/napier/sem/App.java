@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.sql.*;
 import javax.swing.*;
 import java.io.FileWriter;
-import com.opencsv.CSVWriter;
 
 public class App {
     /**
