@@ -28,38 +28,38 @@ public class App {
         Country co = a.getCountry("GBR");
 
         // Run Reports
-        //a.runReport1();
-        //a.runReport2();
-        //a.runReport3();
-        //a.runReport4();
-        //a.runReport5();
-        //a.runReport6();
-        //a.runReport7();
-        //a.runReport8();
-        //a.runReport9();
-        //a.runReport10();
-        //a.runReport11();
-        //a.runReport12();
-        //a.runReport13();
-        //a.runReport14();
-        //a.runReport15();
-        //a.runReport16();
-        //a.runReport17();
-        //a.runReport18();
-        //a.runReport19();
-        //a.runReport20();
-        //a.runReport21();
-        //a.runReport22();
-        //a.runReport23();
-        //a.runReport24();
-        //a.runReport25();
+        a.runReport1();
+        a.runReport2();
+        a.runReport3();
+        a.runReport4();
+        a.runReport5();
+        a.runReport6();
+        a.runReport7();
+        a.runReport8();
+        a.runReport9();
+        a.runReport10();
+        a.runReport11();
+        a.runReport12();
+        a.runReport13();
+        a.runReport14();
+        a.runReport15();
+        a.runReport16();
+        a.runReport17();
+        a.runReport18();
+        a.runReport19();
+        a.runReport20();
+        a.runReport21();
+        a.runReport22();
+        a.runReport23();
+        a.runReport24();
+        a.runReport25();
         a.runReportLang();
 
         // Disconnect from database
         a.disconnect();
 
         // Message to confirm reports are run
-        JOptionPane.showMessageDialog(null, "Reports process finished.", "Reports", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Reports process finished.\nThe reports have been output to the\nSQL Reports folder on your desktop.", "Reports", JOptionPane.INFORMATION_MESSAGE);
     }
 
         /**
@@ -1662,9 +1662,9 @@ public class App {
                 Statement stmt = con.createStatement();
 
                 // Create string for SQL statement
-                String strSelect = "SELECT cl.Language, sum(ROUND((co.Population*(cl.Percentage/100)),0)) As 'PopwithLang' from countrylanguage cl\n" +
-                        "JOIN country co ON cl.CountryCode = co.Code\nWHERE Language in ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')\n"+
-                        "GROUP BY cl.Language\nORDER BY sum(ROUND((co.Population*(cl.Percentage/100)),0)) desc;";
+                String strSelect = "SELECT cl.Language, sum(ROUND((co.Population*(cl.Percentage/100)),0)) As 'PopwithLang', (sum(ROUND((co.Population*(cl.Percentage/100)),0)) / cy.wp) * 100 as '%ofWorldPop' from countrylanguage cl\n" +
+                        "JOIN country co ON cl.CountryCode = co.Code\nCROSS JOIN (SELECT SUM(co.Population) as wp from country co) cy\nWHERE Language in ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')\n"+
+                        "GROUP BY cl.Language, cy.wp\nORDER BY sum(ROUND((co.Population*(cl.Percentage/100)),0)) desc;";
 
                 // Execute SQL statement
                 ResultSet rset = stmt.executeQuery(strSelect);
@@ -1676,15 +1676,16 @@ public class App {
                 BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/zLanguageReport.csv"));
 
                 // write header line containing column names
-                fileWriter.write("Language,Pop With Lang");
+                fileWriter.write("Language,Pop With Lang,%ofWorldPop");
                 // retrieve data and write to a new line in the CSV file
                 while (rset.next()) {
                     String language = rset.getString("Language");
                     long popWithLang = rset.getLong("PopWithLang");
+                    float pcpopWithLang = rset.getLong("%ofWorldPop");
 
                     // format the data
-                    String line = String.format("%s, %d",
-                            language, popWithLang);
+                    String line = String.format("%s, %d, %f",
+                            language, popWithLang, pcpopWithLang);
                     // write the new line
                     fileWriter.newLine();
                     fileWriter.write(line);
@@ -1707,6 +1708,7 @@ public class App {
             // Reset Variables
             String language = "";
             long popWithLang = 0;
+            float percpopWithLang = 0;
         }
 
         /**
