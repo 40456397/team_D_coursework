@@ -19,7 +19,33 @@ public class App {
         // Disconnect from database
         a.disconnect();
     }
+    private void runReport1() {
+    }
 
+    private void displayCountries() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            //could break this down into two SQL statements to retrieve city details using joins
+
+
+            String strSelect = "SELECT * FROM city;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+
+            while (rset.next()) {
+                String name = rset.getString("Name");
+                int count = rset.getInt("population");
+                System.out.println(name + "\t\t" + count);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+    }
     /**
      * Connect to the MySQL database.
      */
