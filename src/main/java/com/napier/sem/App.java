@@ -20,7 +20,6 @@ public class App {
         a.disconnect();
     }
 
-
     /**
      * Connect to the MySQL database.
      */
