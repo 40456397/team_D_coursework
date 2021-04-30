@@ -1114,7 +1114,7 @@ public class App {
 
                 // Create string for SQL statement
                 String strSelect = "SELECT ci.Name, co.Name as 'Country', ci.District, ci.Population from city ci\n" +
-                        "JOIN country co on ci.CountryCode = co.Code\nWHERE ci.ID in (SELECT co.Capital FROM country)\nORDER by Population desc;";
+                        "JOIN country co on ci.CountryCode = co.Code\nWHERE ci.ID in (SELECT co.Capital FROM country)\nORDER by ci.Population desc;";
 
                 // Execute SQL statement
                 ResultSet rset = stmt.executeQuery(strSelect);
@@ -1123,7 +1123,7 @@ public class App {
                 File homeFolder = new File(startPos+"/Desktop/SQL Reports/");
                 homeFolder.mkdirs();
                 // Create fileWrite instance
-                BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report1.csv"));
+                BufferedWriter fileWriter = new BufferedWriter(new FileWriter(homeFolder+"/report17.csv"));
 
                 // write header line containing column names
                 fileWriter.write("City_Name,Country_Name,District,Population");
