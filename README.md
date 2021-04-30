@@ -29,8 +29,7 @@ ID | Name | Met? | Screenshot
 19 | All the capital cities in a region organised by largest to smallest. | Met | 
 20 | The top N populated capital cities in the world where N is provided by the user. | Met |
 21 | The top N populated capital cities in a continent where N is provided by the user. | Met | 
-22 | The top N populated capital cities in a region where N is provided by the user.
- | Met | 
+22 | The top N populated capital cities in a region where N is provided by the user. | Met | 
 23 | The population of people, people living in cities, and people not living in cities in each continent. | Met | 
 24 | The population of people, people living in cities, and people not living in cities in each region. | Met |
 25 | The population of people, people living in cities, and people not living in cities in each country. | Met | 
